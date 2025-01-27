@@ -18,21 +18,21 @@ export class ContactService {
 
   //obtener contacto por id
   get (id: number){
-    return this.httpClient.get<Contact>(`http://localhost:8080/api/contacts${id}`);
+    return this.httpClient.get<Contact>(`http://localhost:8080/api/contacts/${id}`);
   }
 
   //crear contacto
-  create (contact: any){
+  create (contact: Contact){
     return this.httpClient.post<Contact>("http://localhost:8080/api/contacts", contact);
   }
 
   //actualizar contacto
-  update (id: number, contact: any){
-    return this.httpClient.put<Contact>(`http://localhost:8080/api/contacts${id}`, contact);
+  update (id: number, contact: Contact){
+    return this.httpClient.put<Contact>(`http://localhost:8080/api/contacts/${id}`, contact);
   }
 
   //borrar contacto
   delete (id: number){
-    return this.httpClient.delete<void>(`http://localhost:8080/api/contacts${id}`);
+    return this.httpClient.delete<void>(`http://localhost:8080/api/contacts/${id}`);
   }
 }

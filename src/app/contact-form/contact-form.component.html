@@ -1,9 +1,17 @@
-<h2 class="mb-5">Nuevo Contacto</h2>
+<h2 class="mb-5">
+  <!-- hacer dinamico el texto -->
+  @if(contact){
+    Editar
+  } @else {
+    Nuevo
+  }Contacto
+</h2>
 
 <!-- darle el ancho al formulario -->
  <div class="row row-cols-3 justify-content-center">
-  <!-- vinculacion el evento ngSubmit -->
-  <form [formGroup]="form" (ngSubmit)="create()" >
+  @if(form){
+    <!-- vinculacion el evento ngSubmit -->
+  <form [formGroup]="form" (ngSubmit)="save()" >
     <div class="mb-3">
       <label for="name">Nombre</label>
       <input id="name" type="text" placeholder="Nombre" class="form-control" formControlName="name">
@@ -14,13 +22,18 @@
     </div>
   
   
-    <div class="text-end">
-      <button type="button" class="btn btn-outline-danger" routerLink="/">
+    <div class="d-flex justify-content-center btn-group">
+      <button type="button" class="btn btn-outline-danger me-2" routerLink="/">
         Cancelar
       </button>  
       <button class="btn btn-outline-primary">
-        Crear contacto
+        @if(contact) {
+          Actualizar
+        } @else {
+          Crear
+        }Contacto
       </button>
     </div>
   </form>
+  }
  </div>
