@@ -1,3 +1,26 @@
-<p>
-  contact-form works!
-</p>
+<h2 class="mb-5">Nuevo Contacto</h2>
+
+<!-- darle el ancho al formulario -->
+ <div class="row row-cols-3 justify-content-center">
+  <!-- vinculacion el evento ngSubmit -->
+  <form [formGroup]="form" (ngSubmit)="create()" >
+    <div class="mb-3">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" placeholder="Nombre" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+      <label for="name">Email</label>
+      <input id="name" type="email" placeholder="Email" class="form-control" formControlName="email">
+    </div>
+  
+  
+    <div class="text-end">
+      <button type="button" class="btn btn-outline-danger" routerLink="/">
+        Cancelar
+      </button>  
+      <button class="btn btn-outline-primary">
+        Crear contacto
+      </button>
+    </div>
+  </form>
+ </div>
