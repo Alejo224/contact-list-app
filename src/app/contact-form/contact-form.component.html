@@ -9,31 +9,53 @@
 
 <!-- darle el ancho al formulario -->
  <div class="row row-cols-3 justify-content-center">
-  @if(form){
-    <!-- vinculacion el evento ngSubmit -->
-  <form [formGroup]="form" (ngSubmit)="save()" >
-    <div class="mb-3">
-      <label for="name">Nombre</label>
-      <input id="name" type="text" placeholder="Nombre" class="form-control" formControlName="name">
-    </div>
-    <div class="mb-3">
-      <label for="name">Email</label>
-      <input id="name" type="email" placeholder="Email" class="form-control" formControlName="email">
-    </div>
-  
-  
-    <div class="d-flex justify-content-center btn-group">
-      <button type="button" class="btn btn-outline-danger me-2" routerLink="/">
-        Cancelar
-      </button>  
-      <button class="btn btn-outline-primary">
-        @if(contact) {
-          Actualizar
-        } @else {
-          Crear
-        }Contacto
-      </button>
-    </div>
-  </form>
-  }
+    @if(form){
+      <div>
+          @if (errors.length) {
+            <div class="alert alert-danger">
+              <p>Ha sucedido los siguientes errores:</p>
+              <ul>
+                @for (error of errors; track error) {
+                  <li>{{ error.mensaje }}</li>
+                }
+              </ul>
+            </div>
+          }
+            <!-- vinculacion el evento ngSubmit -->
+          <form [formGroup]="form" (ngSubmit)="save()" >
+            <div class="mb-3">
+              <label for="name">Nombre</label>
+              <input id="name" type="text" placeholder="Nombre" class="form-control" formControlName="name">
+    
+            @if(form.get('name')?.hasError('required') && form.get('name')?.touched){
+              <p class="invalid-feedback d-block">El nombre es obligatorio</p>
+            }
+            </div>
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="Email" class="form-control" formControlName="email">
+    
+              @if(form.get('email')?.hasError('required') && form.get('email')?.touched){
+                <p class="invalid-feedback d-block">El email es obligatorio</p>
+              }
+              
+            </div>
+          
+          
+            <div class="d-flex justify-content-center btn-group">
+              <button type="button" class="btn btn-outline-danger me-2" routerLink="/">
+                Cancelar
+              </button>  
+              <button class="btn btn-outline-primary">
+                @if(contact) {
+                  Actualizar
+                } @else {
+                  Crear
+                }Contacto
+              </button>
+            </div>
+        </form>
+      </div>
+
+    }
  </div>
