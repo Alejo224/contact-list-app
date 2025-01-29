@@ -1,4 +1,5 @@
 # Contactlistweb
+Contact List App es una aplicación web desarrollada con Angular (frontend) y Spring Boot (backend) que permite gestionar una lista de contactos. Incluye operaciones CRUD completas, validaciones en frontend y backend, y manejo de errores.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.3.
 
